@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="urn:hl7-org:v2xml"
+	xmlns:tns="urn:hl7-org:v2xml">
+	 
+  <!--Definicion del servicio-->
+  	 <wsdl:types>
+	     
+	     <!--Schema del mensaje - Payload Request-->
+	     <schema xmlns="urn:hl7-org:v2xml">
+            <xsd:import namespace="urn:hl7-org:v2xml" schemaLocation="/xsd/DFT_P03.xsd" /> 
+         </schema>
+        
+        <!--Schema de la respuesta - Response-->
+        <schema xmlns="urn:hl7-org:v2xml">
+            <xsd:import namespace="urn:hl7-org:v2xml" schemaLocation="/xsd/ACK.xsd" /> 
+         </schema>
+
+    </wsdl:types>
+
+    <!--Definicion request-response-->
+   <wsdl:message name="Request">
+    <wsdl:part element="tns:DFT_P03" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="Response">
+    <wsdl:part element="tns:ACK" name="parameters"/>
+  </wsdl:message>
+  
+  <!--Port-->
+  <wsdl:portType name="DFT_P03">
+    <wsdl:operation name="Operation">
+      <wsdl:input message="tns:Request"/>
+      <wsdl:output message="tns:Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <!--Binding-->
+  <wsdl:binding name="DFT_P03SOAP" type="tns:DFT_P03">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Operation">
+      <soap:operation soapAction="https://www.fundacio-puigvert.es/Operation/DFT_P03"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <!--Service-->
+  <wsdl:service name="DFT_P03">
+    <wsdl:port binding="tns:DFT_P03SOAP" name="DFT_P03SOAP">
+      <soap:address location="https://www.costaisa.com"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

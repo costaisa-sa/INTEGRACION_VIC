@@ -1,0 +1,11 @@
+#Sun Oct 18 08:21:30 UTC 2026
+ActivityStartAddress=ActivityStartWorkflowReprocess
+CPILocal=HCILocal
+CPI_LOCAL=https\://sanicostdemo.it-cpi018-rt.cfapps.eu10-003.hana.ondemand.com/cxf/
+CREDENTIALS_HCI=HCILocal
+CREDENTIALS_SCP=CloudPlatform_DEV
+IngresoPacienteAddress=Ingreso_Paciente
+System=_DEV
+URL_HANA=https\://y100030-iflmap.hcisbp.eu1.hana.ondemand.com
+URL_HCI=https\://y100030-iflmap.hcisbp.eu1.hana.ondemand.com
+URL_WF=https\://bpmworkflowruntimea2d6007ea-a76e164cb.hana.ondemand.com

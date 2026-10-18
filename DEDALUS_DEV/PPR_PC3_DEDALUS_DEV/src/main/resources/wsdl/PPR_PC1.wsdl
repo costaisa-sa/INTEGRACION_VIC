@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="urn:hl7-org:v2xml"
+	xmlns:tns="urn:hl7-org:v2xml">
+	 
+  <!-- Definicion del servicio -->
+  <wsdl:types>
+     <!-- Schema del mensaje - Payload Request -->
+     <xsd:schema xmlns="urn:hl7-org:v2xml">
+        <xsd:import namespace="urn:hl7-org:v2xml" schemaLocation="/xsd/PPR_PC1.xsd" /> 
+     </xsd:schema>
+    
+    <!-- Schema de la respuesta - Response -->
+    <xsd:schema xmlns="urn:hl7-org:v2xml">
+        <xsd:import namespace="urn:hl7-org:v2xml" schemaLocation="/xsd/ACK.xsd" /> 
+    </xsd:schema>
+  </wsdl:types>
+
+  <!-- Definicion request-response -->
+  <wsdl:message name="Request">
+    <wsdl:part element="tns:PPR_PC1" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="Response">
+    <wsdl:part element="tns:ACK" name="parameters"/>
+  </wsdl:message>
+  
+  <!-- Port -->
+  <wsdl:portType name="PPR_PC1_PortType">
+    <wsdl:operation name="Operation">
+      <wsdl:input message="tns:Request"/>
+      <wsdl:output message="tns:Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <!-- Binding -->
+  <wsdl:binding name="PPR_PC1_SOAP" type="tns:PPR_PC1_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Operation">
+      <soap:operation soapAction="https://www.costaisa.com/Operation/PPR_PC1"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <!-- Service -->
+  <wsdl:service name="PPR_PC1_Service">
+    <wsdl:port binding="tns:PPR_PC1_SOAP" name="PPR_PC1_SOAPPort">
+      <soap:address location="https://www.costaisa.com"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>
